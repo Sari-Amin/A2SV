@@ -1,0 +1,32 @@
+# Problem: Equivalent Strings - https://codeforces.com/problemset/problem/559/B
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string rec(string s){
+    
+    if(s.size()%2!=0){
+        return s;
+    }
+    string s1=rec(s.substr(0,s.size()/2));
+    string s2=rec(s.substr(s.size()/2,s.size()/2));
+    if(s1<s2)
+        return s1+s2;
+    else
+        return s2+s1;
+
+}
+int main()
+{
+    string a,b;
+    cin>>a>>b;
+    int n=a.size();
+    if(rec(a)==rec(b))
+        cout<<"YES\n";
+    else
+        cout<<"NO\n";
+
+
+    return 0;
+}
